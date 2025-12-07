@@ -1,0 +1,77 @@
+# === Node.js padrão ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# === Logs ===
+logs/
+*.log
+*.log.*
+debug.log
+error.log
+
+# === Ambiente ===
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# === Diretórios de build/output ===
+dist/
+build/
+out/
+.tmp/
+temp/
+
+# === Cache ===
+.cache/
+.cache-loader/
+.eslintcache
+.stylelintcache
+
+# === Testes ===
+coverage/
+lib-cov/
+.nyc_output/
+
+# === Sistema ===
+.DS_Store
+Thumbs.db
+
+# === VSCode ===
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# === TypeScript ===
+*.tsbuildinfo
+
+# === Next.js (caso use) ===
+.next/
+.vercel/
+
+# === Nuxt (caso use) ===
+.nuxt/
+.output/
+
+# === SvelteKit (caso use) ===
+.svelte-kit/
+
+# === PM2 ===
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# === Docker ===
+docker-data/
+
+# === Outras ferramentas comuns ===
+.idea/
+*.swp
+*.swo
