@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import path from "path";
+import path from "path"; // rotas publicas
 import mustache from "mustache-express";
 import mainRoutes from "./routes/index";
 
@@ -11,8 +11,14 @@ const server = express();
 
 // Configurar Mustache
 server.set("view engine", "mustache");
-server.set("views", path.join(__dirname, "../src/views"));
-server.engine("mustache", mustache());
+server.set("views", path.join(__dirname, "views"));
+server.engine(
+  "mustache",
+  mustache(
+    path.join(__dirname, "views/partials"), // Pasta dos partials
+    ".mustache" // Extensão dos arquivos
+  )
+);
 
 // Configuração da pasta public
 server.use(express.static(path.join(__dirname, "../public")));
@@ -21,7 +27,7 @@ server.use(express.static(path.join(__dirname, "../public")));
 server.use(mainRoutes);
 
 server.use((req, res) => {
-  res.send("pagina não encontrada");
+  res.status(404).send("Página não encontrada");
 });
 
 // LISTEN COM .ENV
