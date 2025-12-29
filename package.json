@@ -15,11 +15,10 @@
   "type": "commonjs",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "nodemon --exec ts-node src/server.ts -e ts,json,mustache,css",
     "build": "tsc",
     "start": "node dist/server.js",
-    "watch:dev": "concurrently \"tsc --watch\" \"nodemon dist/server.js\"",
-    "start-dev": "nodemon --exec ts-node src/server.ts -e ts,json,mustache"
+    "watch:dev": "concurrently \"tsc --watch\" \"nodemon dist/server.js\""
   },
   "devDependencies": {
     "@types/express": "^5.0.6",

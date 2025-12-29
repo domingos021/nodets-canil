@@ -6,130 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetDevShop - O petshop do dev</title>
 
-    <!-- ROTA ESTÁTICA - ARQUIVO CSS:
-         
-         ESTRUTURA DE PASTAS:
-         public/
-         └── css/
-             └── style.css
-         
-         COMO FUNCIONA:
-         - O servidor está configurado para servir a pasta 'public' como raiz estática
-         - Quando você acessa /css/style.css, o servidor busca em public/css/style.css
-         - A pasta 'public' é "invisível" na URL
-         
-         CAMINHO COMPLETO: public/css/style.css
-         CAMINHO NA URL: /css/style.css
-    -->
+    {{!-- Arquivos estáticos da pasta public/ --}}
     <link rel="stylesheet" href="/css/style.css" />
-
-    <!-- ROTA ESTÁTICA - IMAGEM (FAVICON):
-         
-         ESTRUTURA DE PASTAS:
-         public/
-         └── images/
-             └── favicon.png
-         
-         COMO FUNCIONA:
-         - Mesma lógica do CSS
-         - O '/' no início busca a partir da raiz configurada (public)
-         - public/images/favicon.png é acessado via /images/favicon.png
-         
-         CAMINHO COMPLETO: public/images/favicon.png
-         CAMINHO NA URL: /images/favicon.png
-    -->
     <link rel="icon" type="image/png" href="/images/favicon.png" />
 </head>
 
 <body>
+    {{!-- Cabeçalho com logo e busca --}}
     <header>
         <div class="container">
-            <!-- ROTA DINÂMICA - HOME/RAIZ:
-                 
-                 href="/" 
-                 
-                 TIPO: Rota dinâmica processada pelo servidor
-                 FUNÇÃO: Retorna a página inicial com todos os produtos
-                 
-                 Esta NÃO é um arquivo na pasta public, é uma rota que o 
-                 servidor processa (provavelmente com Express/Node.js)
-                 
-                 Exemplo no backend (Express):
-                 app.get('/', (req, res) => {
-                     res.render('index', { pets: todosOsPets });
-                 });
-            -->
             <a href="/">PetDevShop</a>
-
-            <!-- ROTA DINÂMICA - BUSCA/PESQUISA:
-                 
-                 action="/search"
-                 method="GET"
-                 
-                 COMO FUNCIONA:
-                 1. Usuário digita "poodle" no campo de busca
-                 2. Ao enviar, a URL fica: /search?q=poodle
-                 3. O servidor recebe esta requisição GET
-                 4. Processa a busca no banco de dados
-                 5. Retorna HTML com os resultados
-                 
-                 O parâmetro 'name="q"' do input vira ?q= na URL
-                 
-                 Exemplo no backend (Express):
-                 app.get('/search', (req, res) => {
-                     const busca = req.query.q; // pega o valor de ?q=
-                     const resultados = buscarPets(busca);
-                     res.render('search', { pets: resultados });
-                 });
-            -->
             <form method="GET" action="/search">
                 <input type="search" name="q" placeholder="Pesquise por raça" />
             </form>
         </div>
     </header>
 
+    {{!-- Menu de navegação com item ativo dinâmico --}}
     <nav>
         <ul>
-            <!-- ROTA DINÂMICA - TODOS OS PETS:
-                 
-                 href="/"
-                 class="active" - Indica que esta é a página atual
-                 
-                 Leva para a mesma rota raiz, mostrando todos os animais
-                 (cachorros + gatos + peixes)
-            -->
-            <li class="active"><a href="/">Todos</a></li>
-
-            <!-- ROTA DINÂMICA - FILTRO DE CACHORROS:
-                 
-                 href="/dogs"
-                 
-                 FUNÇÃO: Filtra e mostra apenas produtos de cachorros
-                 
-                 Exemplo no backend (Express):
-                 app.get('/dogs', (req, res) => {
-                     const cachorros = buscarPorCategoria('cachorros');
-                     res.render('index', { pets: cachorros });
-                 });
-            -->
-            <li class=""><a href="/dogs">Cachorros</a></li>
-
-            <!-- ROTA DINÂMICA - FILTRO DE GATOS:
-                 
-                 href="/cats"
-                 
-                 FUNÇÃO: Filtra e mostra apenas produtos de gatos
-                 Padrão consistente: /nome-da-categoria
-            -->
-            <li class=""><a href="/cats">Gatos</a></li>
-
-            <!-- ROTA DINÂMICA - FILTRO DE PEIXES:
-                 
-                 href="/fishes"
-                 
-                 FUNÇÃO: Filtra e mostra apenas produtos de peixes
-                 Segue o mesmo padrão das outras categorias
-            -->
-            <li class=""><a href="/fishes">Peixes</a></li>
+            <li class="{{#menu.home}}active{{/menu.home}}">
+                <a href="/">Todos</a>
+            </li>
+            <li class="{{#menu.dogs}}active{{/menu.dogs}}">
+                <a href="/dogs">Cachorros</a>
+            </li>
+            <li class="{{#menu.cats}}active{{/menu.cats}}">
+                <a href="/cats">Gatos</a>
+            </li>
+            <li class="{{#menu.fishes}}active{{/menu.fishes}}">
+                <a href="/fishes">Peixes</a>
+            </li>
         </ul>
     </nav>

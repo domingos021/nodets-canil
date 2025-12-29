@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
 
-export const search = (req: Request, res: Response) => {
+export const search = (_req: Request, _res: Response) => {
   // res.render("pages/search");
 };
