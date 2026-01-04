@@ -1,41 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetDevShop - O petshop do dev</title>
 
     {{!-- Arquivos estáticos da pasta public/ --}}
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="icon" type="image/png" href="/images/favicon.png" />
-</head>
+  </head>
 
-<body>
+  <body>
     {{!-- Cabeçalho com logo e busca --}}
     <header>
-        <div class="container">
-            <a href="/">PetDevShop</a>
-            <form method="GET" action="/search">
-                <input type="search" name="q" placeholder="Pesquise por raça" />
-            </form>
-        </div>
+      <div class="container">
+        <a href="/">PetDevShop</a>
+        <form method="GET" action="/search" class="search-form">
+          <input
+            type="search"
+            name="q"
+            placeholder="Pesquise por nome"
+            value="{{searchQuery}}"
+            class="search-input"
+          />
+          <select name="sex" class="search-select">
+            <option value="">Todos os sexos</option>
+            <option value="Masculino" {{#isMasculino}}selected{{/isMasculino}}>Masculino</option>
+            <option value="Feminino" {{#isFeminino}}selected{{/isFeminino}}>Feminino</option>
+          </select>
+          <button type="submit" class="search-button" aria-label="Buscar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
     </header>
 
     {{!-- Menu de navegação com item ativo dinâmico --}}
     <nav>
-        <ul>
-            <li class="{{#menu.home}}active{{/menu.home}}">
-                <a href="/">Todos</a>
-            </li>
-            <li class="{{#menu.dogs}}active{{/menu.dogs}}">
-                <a href="/dogs">Cachorros</a>
-            </li>
-            <li class="{{#menu.cats}}active{{/menu.cats}}">
-                <a href="/cats">Gatos</a>
-            </li>
-            <li class="{{#menu.fishes}}active{{/menu.fishes}}">
-                <a href="/fishes">Peixes</a>
-            </li>
-        </ul>
+      <ul>
+        <li class="{{#menu.home}}active{{/menu.home}}">
+          <a href="/">Todos</a>
+        </li>
+        <li class="{{#menu.dogs}}active{{/menu.dogs}}">
+          <a href="/dogs">Cachorros</a>
+        </li>
+        <li class="{{#menu.cats}}active{{/menu.cats}}">
+          <a href="/cats">Gatos</a>
+        </li>
+        <li class="{{#menu.fishes}}active{{/menu.fishes}}">
+          <a href="/fishes">Peixes</a>
+        </li>
+      </ul>
     </nav>
+  </body>
+</html>

@@ -72,8 +72,9 @@ server.use(mainRoutes);
  * Captura qualquer requisição não tratada anteriormente
  * e retorna uma resposta apropriada de página não encontrada.
  */
+
 server.use((_req, res) => {
-  res.status(404).send("Página não encontrada");
+  res.status(404).render("pages/404"); // ← Adicione o status 404
 });
 
 /**

@@ -26,137 +26,324 @@ export type PetData = {
   image: string;
   name: string;
   color: string;
+  petName: string;
   sex: "Masculino" | "Feminino";
 };
 
 // Dados privados - evita manipulação externa direta
 const animalsData: PetData[] = [
   // Dogs
+
+  // Pastor Alemão
   {
     type: "dog",
-    image: "pastor-alemao.jpg",
+    image: "pastor-alemao_macho.jpg",
     name: "Pastor-alemão",
     color: "Amarelo e Preto",
     sex: "Masculino",
+    petName: "Thor",
   },
   {
     type: "dog",
-    image: "labrador.jpg",
+    image: "pastor-alemao_femea.jpg",
+    name: "Pastor-alemão",
+    color: "Amarelo e Preto",
+    sex: "Feminino",
+    petName: "Luna",
+  },
+
+  // Labrador Retriever
+  {
+    type: "dog",
+    image: "labrador_macho.jpg",
     name: "Labrador Retriever",
     color: "Branco",
     sex: "Masculino",
+    petName: "Max",
   },
   {
     type: "dog",
-    image: "zwergspitz.jpg",
+    image: "labrador_femea.jpg",
+    name: "Labrador Retriever",
+    color: "Branco",
+    sex: "Feminino",
+    petName: "Bella",
+  },
+
+  // Zwergspitz
+  {
+    type: "dog",
+    image: "zwergspitz_macho.jpg",
+    name: "Zwergspitz",
+    color: "Amarelo",
+    sex: "Masculino",
+    petName: "Simba",
+  },
+  {
+    type: "dog",
+    image: "zwergspitz_femea.jpg",
     name: "Zwergspitz",
     color: "Amarelo",
     sex: "Feminino",
+    petName: "Mel",
   },
+
+  // Husky Siberiano
   {
     type: "dog",
-    image: "husky.jpg",
+    image: "husky_macho.jpg",
     name: "Husky Siberiano",
     color: "Branco e Preto",
     sex: "Masculino",
+    petName: "Zeus",
   },
   {
     type: "dog",
-    image: "golden.jpg",
+    image: "husky_femea.jpg",
+    name: "Husky Siberiano",
+    color: "Branco e Preto",
+    sex: "Feminino",
+    petName: "Maya",
+  },
+
+  // Golden Retriever
+  {
+    type: "dog",
+    image: "golden_macho.jpg",
     name: "Golden Retriever",
     color: "Amarelo",
     sex: "Masculino",
+    petName: "Duke",
   },
   {
     type: "dog",
-    image: "poodle.jpg",
+    image: "golden_femea.jpg",
+    name: "Golden Retriever",
+    color: "Amarelo",
+    sex: "Feminino",
+    petName: "Honey",
+  },
+
+  // Poodle
+  {
+    type: "dog",
+    image: "poodle_macho2.jpg",
+    name: "Poodle",
+    color: "Branco",
+    sex: "Masculino",
+    petName: "Toby",
+  },
+  {
+    type: "dog",
+    image: "poodle_femea1.jpg",
     name: "Poodle",
     color: "Branco",
     sex: "Feminino",
+    petName: "Nina",
   },
+
+  // Bulldog
   {
     type: "dog",
-    image: "bulldog.jpg",
+    image: "bulldog_macho.jpg",
     name: "Bulldog",
     color: "Branco e Amarelo",
     sex: "Masculino",
+    petName: "Rocky",
+  },
+  {
+    type: "dog",
+    image: "bulldog_femea.jpg",
+    name: "Bulldog",
+    color: "Branco e Amarelo",
+    sex: "Feminino",
+    petName: "Lola",
   },
 
   // Cats
+
+  // Persa
   {
     type: "cat",
-    image: "persa.jpg",
+    image: "persa_macho.jpg",
     name: "Persa",
     color: "Amarelo",
     sex: "Masculino",
+    petName: "Garfield",
   },
   {
     type: "cat",
-    image: "mainecoon.jpg",
+    image: "persa_femea.jpg",
+    name: "Persa",
+    color: "Amarelo",
+    sex: "Feminino",
+    petName: "Mia",
+  },
+
+  // Maine Coon
+  {
+    type: "cat",
+    image: "mainecoon_macho.jpg",
     name: "Maine Coon",
     color: "Preto e Branco",
     sex: "Masculino",
+    petName: "Felix",
   },
   {
     type: "cat",
-    image: "bengal.jpg",
+    image: "mainecoon_femea.jpg",
+    name: "Maine Coon",
+    color: "Preto e Branco",
+    sex: "Feminino",
+    petName: "Frida",
+  },
+
+  // Bengal
+  {
+    type: "cat",
+    image: "bengal_macho.jpg",
+    name: "Bengal",
+    color: "Branco, Preto e Amarelo",
+    sex: "Masculino",
+    petName: "Tiger",
+  },
+  {
+    type: "cat",
+    image: "bengal_femea.jpg",
     name: "Bengal",
     color: "Branco, Preto e Amarelo",
     sex: "Feminino",
+    petName: "Nala",
   },
+
+  // Siamês
   {
     type: "cat",
-    image: "siames.jpg",
+    image: "siames_macho.jpg",
     name: "Siamês",
     color: "Amarelo e Preto",
     sex: "Masculino",
+    petName: "Tom",
   },
   {
     type: "cat",
-    image: "sphynx.jpg",
+    image: "siames_femea.jpg",
+    name: "Siamês",
+    color: "Amarelo e Preto",
+    sex: "Feminino",
+    petName: "Jade",
+  },
+
+  // Sphynx
+  {
+    type: "cat",
+    image: "sphynx_macho.jpg",
     name: "Sphynx",
     color: "Branco",
     sex: "Masculino",
+    petName: "Amon",
+  },
+  {
+    type: "cat",
+    image: "sphynx_femea.jpg",
+    name: "Sphynx",
+    color: "Branco",
+    sex: "Feminino",
+    petName: "Cleópatra",
   },
 
   // Fish
+
+  // Tetra Neon
   {
     type: "fish",
-    image: "neon.jpg",
+    image: "neon_macho.jpg",
     name: "Tetra Neon",
     color: "Vermelho e Azul",
     sex: "Masculino",
+    petName: "Flash",
   },
   {
     type: "fish",
-    image: "matogrosso.jpg",
+    image: "neon_femea.jpg",
+    name: "Tetra Neon",
+    color: "Vermelho e Azul",
+    sex: "Feminino",
+    petName: "Nemo",
+  },
+
+  // Mato Grosso
+  {
+    type: "fish",
+    image: "matogrosso_macho.jpg",
     name: "Mato Grosso",
     color: "Laranja",
     sex: "Masculino",
+    petName: "Sunny",
   },
   {
     type: "fish",
-    image: "limpavidro.jpg",
+    image: "matogrosso_femea.jpg",
+    name: "Mato Grosso",
+    color: "Laranja",
+    sex: "Feminino",
+    petName: "Aurora",
+  },
+
+  // Limpa Vidro
+  {
+    type: "fish",
+    image: "limpavidro_macho.jpg",
     name: "Limpa Vidro",
     color: "Verde e Branco",
     sex: "Masculino",
+    petName: "Verde",
   },
   {
     type: "fish",
-    image: "tanictis.jpg",
+    image: "limpavidro_femea.jpg",
+    name: "Limpa Vidro",
+    color: "Verde e Branco",
+    sex: "Feminino",
+    petName: "Jade",
+  },
+
+  // Tanictis
+  {
+    type: "fish",
+    image: "tanictis_macho.jpg",
     name: "Tanictis",
     color: "Vermelho",
     sex: "Masculino",
+    petName: "Rubi",
   },
   {
     type: "fish",
-    image: "acara.jpg",
+    image: "tanictis_femea.jpg",
+    name: "Tanictis",
+    color: "Vermelho",
+    sex: "Feminino",
+    petName: "Scarlet",
+  },
+
+  // Acará Bandeira
+  {
+    type: "fish",
+    image: "acara_macho.jpg",
     name: "Acará Bandeira",
     color: "Preto",
     sex: "Masculino",
+    petName: "Shadow",
+  },
+  {
+    type: "fish",
+    image: "acara_femea.jpg",
+    name: "Acará Bandeira",
+    color: "Preto",
+    sex: "Feminino",
+    petName: "Onix",
   },
 ];
-
 /**
  * API para acesso e manipulação de dados de pets
  */
