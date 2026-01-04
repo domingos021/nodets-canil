@@ -1,4 +1,9 @@
 import { Request, Response } from "express";
+// Importa o model Pet, que fornece métodos para
+// acessar e filtrar os dados dos pets.
+// O controller utiliza essa API para obter os dados
+// que serão enviados para a view.
+import { Pet, PetData } from "../models/pet";
 
 /**
  * ======================================================
@@ -39,12 +44,16 @@ const BANNER_CONFIG = {
  * @param title - Título exibido no banner
  * @param image - Nome da imagem de fundo do banner
  * @param activePage - Identificador da página ativa no menu
+ * @param petList - Lista de pets a ser exibida na página
  */
+
+//vai para o mustache
 const renderPageWithBanner = (
   res: Response,
   title: string,
   image: string,
-  activePage: keyof typeof BANNER_CONFIG
+  activePage: keyof typeof BANNER_CONFIG,
+  petList: PetData[]
 ): void => {
   res.render("pages/page", {
     banner: {
@@ -57,6 +66,7 @@ const renderPageWithBanner = (
       cats: activePage === "cats",
       fishes: activePage === "fishes",
     },
+    list: petList,
   });
 };
 
@@ -74,6 +84,7 @@ const renderPageWithBanner = (
  * - Garante que apenas categorias existentes sejam usadas
  * - Facilita a adição de novas páginas no futuro
  * - Gerencia automaticamente o estado ativo do menu
+ * - Filtra os pets de acordo com a categoria
  *
  * @param category - Categoria válida do BANNER_CONFIG
  * @returns Controller Express pronto para uso
@@ -81,7 +92,23 @@ const renderPageWithBanner = (
 const createCategoryController = (category: keyof typeof BANNER_CONFIG) => {
   return (_req: Request, res: Response): void => {
     const { title, image } = BANNER_CONFIG[category];
-    renderPageWithBanner(res, title, image, category);
+
+    // Busca os pets de acordo com a categoria
+    let list: PetData[];
+
+    if (category === "home") {
+      list = Pet.getAll();
+    } else if (category === "dogs") {
+      list = Pet.getByType("dog");
+    } else if (category === "cats") {
+      list = Pet.getByType("cat");
+    } else if (category === "fishes") {
+      list = Pet.getByType("fish");
+    } else {
+      list = [];
+    }
+
+    renderPageWithBanner(res, title, image, category, list);
   };
 };
 
@@ -96,7 +123,8 @@ const createCategoryController = (category: keyof typeof BANNER_CONFIG) => {
  *
  * A lógica interna é gerada dinamicamente pela
  * factory `createCategoryController`, incluindo o
- * controle de qual item do menu deve estar ativo.
+ * controle de qual item do menu deve estar ativo
+ * e a filtragem correta dos pets por categoria.
  */
 export const home = createCategoryController("home");
 export const dogs = createCategoryController("dogs");

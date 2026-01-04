@@ -1,21 +1,41 @@
+{{!-- VIEW: page.mustache --}}
+{{!-- Renderiza páginas de categorias (home, dogs, cats, fishes, search) --}}
+{{!-- Recebe do controller: banner, menu e list (PetData[]) --}}
+
 {{> header}}
 
-{{!-- Banner dinâmico --}}
+{{!-- ====================================================== --}}
+{{!-- BANNER DINÂMICO                                      --}}
+{{!-- ====================================================== --}}
 {{#banner}}
-<section class="banner" style="background-image: url('/{{background}}')">
-    {{title}}
+<section class="banner" style="background-image: url('/{{ background }}')">
+  {{ title }}
 </section>
-<h2>{{title}} disponíveis para adoção</h2>
+
+<h2>{{ title }} disponíveis para adoção</h2>
 {{/banner}}
 
-{{!-- Lista de animais --}}
+{{!-- ====================================================== --}}
+{{!-- LISTA DE ANIMAIS (quando há resultados)              --}}
+{{!-- ====================================================== --}}
 <div class="container list">
-    <div class="item">
-        <img src="/images/pastor-alemao.jpg" alt="Pastor-alemão" class="item--image" />
-        <div class="item--name">Pastor-alemão</div>
-        <div class="item--color">Cor: Amarelo e Preto</div>
-        <div class="item--genre">Gênero: Masculino</div>
-    </div>
+  {{#list}}
+  <div class="item">
+    <img src="/images/{{ image }}" alt="{{ name }}" class="item--image" />
+    <div class="item--name">{{ name }}</div>
+    <div class="item--color">Cor: {{ color }}</div>
+    <div class="item--genre">Gênero: {{ sex }}</div>
+  </div>
+  {{/list}}
 </div>
+
+{{!-- ====================================================== --}}
+{{!-- LISTA VAZIA (quando NÃO há resultados)               --}}
+{{!-- ====================================================== --}}
+{{^list}}
+<div class="container no-list">
+  <h2>Não há animais disponíveis nessas condições.</h2>
+</div>
+{{/list}}
 
 {{> footer}}
